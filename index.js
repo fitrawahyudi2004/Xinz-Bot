@@ -133,8 +133,8 @@ XeonBotInc.ev.on('group-participants.update', async (anu) => {
                 if (anu.action == 'add') {
                 const buffer = await getBuffer(ppuser)
                 let xeonName = num
-                const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
-	            const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
+                const xtime = moment.tz('Asia/Jakarta').format('HH:mm:ss')
+	            const xdate = moment.tz('Asia/Jakarta').format('DD/MM/YYYY')
 	            const xmembers = metadata.participants.length
                 let unicorndoc = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "916909137213-1604595598@g.us"}, "message": {orderMessage: {itemCount: 9999999,status: 200, thumbnail: buffer, surface: 200, message: `${metadata.subject}`, orderTitle: 'xeon', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
                 xeonbody = `┌─❖
@@ -176,8 +176,8 @@ mediaUrl: `${websitex}`
 XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
                 } else if (anu.action == 'remove') {
                 	const buffer = await getBuffer(ppuser)
-                    const xeontime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
-	                const xeondate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
+                    const xeontime = moment.tz('Asia/Jakarta').format('HH:mm:ss')
+	                const xeondate = moment.tz('Asia/Jakarta').format('DD/MM/YYYY')
                 	let xeonName = num
                     const xeonmembers = metadata.participants.length
                     let unicorndoc = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "916909137213-1604595598@g.us"}, "message": {orderMessage: {itemCount: 9999999,status: 200, thumbnail: buffer, surface: 200, message: `${metadata.subject}`, orderTitle: 'xeon', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}

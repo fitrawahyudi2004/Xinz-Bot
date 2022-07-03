@@ -1,13 +1,12 @@
 
-
 const fs = require("fs")
 const chalk = require("chalk")
 
 //aumto functioner
 global.autoTyping = false //auto tying in gc (true to on, false to off)
-global.autoreadpmngc = false //auto reading in gc and pm (true to on, false to off)
+global.autoreadpmngc = true //auto reading in gc and pm (true to on, false to off)
 global.autoReadGc = true //auto reading in gc (true to on, false to off)
-global.autoReadAll = false // auto reading in all pchat gc and status (true to on, false to off)
+global.autoReadAll = true // auto reading in all pchat gc and status (true to on, false to off)
 global.autoRecord = false //auto recording (true to on, false to off)
 global.available = true //auto available (true to on, false to off)
 
@@ -22,7 +21,7 @@ global.doc6 = 'application/vnd.android.package-archive'
 //owmner v card
 global.owner = ['6281262166032'] //ur owner number
 global.ownername = "Fitra Wahyudi"
-global.ytname = "YT:ARULL OFC " //ur yt chanel name
+global.ytname = "YT:- " //ur yt chanel name
 global.socialm = "GitHub: Fitrawahyudi2004" //ur github or insta name
 global.location = "Indonesia, Sumatera Utara, Medan" //ur location
 
@@ -80,7 +79,7 @@ global.mess = {
     group: '*Khusus Didalam Group*',
     private: '*Khusus Chat Private*',
     bot: '*Khusus Yang Jadibot*',
-    wait: '*Sabar...Ya om*',
+    wait: '*Loading ...*',
     linkm: '*Linknya Mana?*',
     error: 'Error!',
     ban: 'You have been banned by the owner, if you want to be unbanned, chat owner.',
@@ -111,7 +110,7 @@ global.APIs = {
 
 // key
 global.APIKeys = {
-	'https://zenzapis.xyz': 'Your Key',
+	'https://zenzapis.xyz': 'hdiiofficial',
 }
 //menu logo maker
 global.flaming = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&text='

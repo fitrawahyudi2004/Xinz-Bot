@@ -91,23 +91,7 @@ const {
   Couples,
   Darkjokes
 } = require("dhn-api");
-function ucapan() {
-  const time = moment.tz('Asia/Jakarta').format('HH:mm:ss')
-  res = "Selamat dinihari"
-  if (time >= 4) {
-    res = "Selamat pagi 🌄"
-  }
-  if (time > 10) {
-    res = "Selamat siang ☀️"
-  }
-  if (time >= 15) {
-    res = "Selamat sore 🌅"
-  }
-  if (time >= 18) {
-    res = "Selamat malam 🌙"
-  }
-  return res
-}
+
 const _ = require('lodash')
 const yargs = require('yargs/yargs')
 var low
@@ -202,9 +186,17 @@ global.db = JSON.parse(fs.readFileSync('./src/database.json'))
 let _sewa = require("./lib/sewa");
 const sewa = JSON.parse(fs.readFileSync('./database/sewa.json'))
 
-// time (india)
-const time = moment.tz('Asia/Kolkata').format('DD/MM HH:mm:ss')
+
+const time = moment.tz('Asia/Jakarta').format('HH:mm:ss')
 const ucap = moment(Date.now()).tz('Asia/Kolkata').locale('id').format('a')
+let d = new Date(new Date + 3600000)
+let locale = 'id'
+const weton = ['Pahing', 'Pon', 'Wage', 'Kliwon', 'Legi'][Math.floor(d / 84600000) % 5]
+const dateIslamic = Intl.DateTimeFormat(locale + '-TN-u-ca-islamic', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    }).format(d)
 // date
 var buln = ['/01/', '/02/', '/03/', '/04/', '/05/', '/06/', '/07/', '/08/', '/09/', '/10/', '/11/', '/12/'];
 var myHari = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -217,6 +209,28 @@ var yye = tgel.getYear();
 var syear = (yye < 1000) ? yye + 1900 : yye;
 const jangwak = (hri + '' + buln[bulnh] + '' + syear)
 const janghar = (thisDaye)
+const ultah = new Date('November 19, 2022 23:59:59')
+    const sekarat = new Date().getTime()
+    const Kurang = ultah - sekarat
+    const ohari = Math.floor(Kurang / (1000 * 60 * 60 * 24));
+    const ojam = Math.floor(Kurang % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
+    const onet = Math.floor(Kurang % (1000 * 60 * 60) / (1000 * 60))
+    const detek = Math.floor(Kurang % (1000 * 60) / 1000)
+const lebaran = new Date ('April 20, 2023 23:59:59')
+    const sekiring = new Date().getTime()
+    const seleseh = lebaran - sekiring
+    const jjhari = Math.floor(seleseh / (1000 * 60 * 60 * 24));
+    const jjjam = Math.floor(seleseh % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
+    const mmmmenit = Math.floor(seleseh % (1000 * 60 * 60) / (1000 * 60))
+    const dddetik = Math.floor(seleseh % (1000 * 60) / 1000)
+const idulAdha = new Date ('July 8, 2022 23:59:59')
+    const iedblum = new Date().getTime()
+    const ieddah = idulAdha - iedblum
+    const ieday = Math.floor(ieddah / (1000 * 60 * 60 * 24)); 
+    const iedhrs = Math.floor(ieddah % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
+    const iedmin = Math.floor(ieddah % (1000 * 60 * 60) / (1000 * 60))
+    const iedsec = Math.floor(ieddah % (1000 * 60) / 1000)
+    
 
 module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
 try {
@@ -236,6 +250,28 @@ const quoted = m.quoted ? m.quoted : m
 const mime = (quoted.msg || quoted).mimetype || ''
 const isMedia = /image|video|sticker|audio/.test(mime)
 const messagesD = body.slice(0).trim().split(/ +/).shift().toLowerCase()
+const time2 = moment().tz('Asia/Jakarta').format('HH:mm:ss')
+        if(time2 < "23:59:00"){
+        var ucapanWaktu = 'Selamat Malam 🏙️'
+}
+        if(time2 < "19:00:00"){
+        var ucapanWaktu = 'Selamat Petang 🌆'
+}
+        if(time2 < "18:00:00"){
+        var ucapanWaktu = 'Selamat Sore 🌇'
+}
+        if(time2 < "15:00:00"){
+        var ucapanWaktu = 'Selamat Siang 🌤️'
+}
+        if(time2 < "10:00:00"){
+        var ucapanWaktu = 'Selamat Pagi 🌄'
+}
+        if(time2 < "05:00:00"){
+        var ucapanWaktu = 'Selamat Subuh 🌆'
+}
+        if(time2 < "03:00:00"){
+        var ucapanWaktu = 'Selamat Tengah Malam 🌃'
+}
 
 // Group
 const groupMetadata = m.isGroup ? await XeonBotInc.groupMetadata(m.chat).catch(e => {}) : ''
@@ -1539,36 +1575,56 @@ const jumlahUser = pendaftar.length
   if (!isInventory){ addInventori(m.sender) }
   if (!isInventoriBuruan){ addInventoriBuruan(m.sender) }
   
-const menulist = `┌─❖
-│「 Hi 👋 」
-└┬❖ 「 ${pushname} 」
-┌┤✑  How Are You? 😄
-│└────────────┈ ⳹
-│
-└─「 𝘽𝙊𝙏 𝙄𝙉𝙁𝙊 」       
-│𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-│𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-│𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botname}
-│𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownername}
-│𝗢𝘄𝗻𝗲𝗿 𝗡𝗼. : ${global.ownernummenu}
-│𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-│𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
-│𝗧𝗼𝘁𝗮𝗹 𝗨𝘀𝗲𝗿 : ${Object.keys(global.db.users).length}
-│𝗧𝗼𝘁𝗮𝗹 𝗛𝗶𝘁 : ${jumlahcmd}
-│𝗧𝗼𝘁𝗮𝗹 𝗛𝗶𝘁 𝗧𝗼𝗱𝗮𝘆 : ${jumlahharian}
-│
-└─「 𝙐𝙎𝙀𝙍'𝙎 𝙇𝙀𝙑𝙀𝙇𝙄𝙉𝙂 」
-│𝗬𝗼𝘂𝗿 𝗟𝗲𝘃𝗲𝗹𝗶𝗻𝗴 : ${levelMenu}
-│𝗬𝗼𝘂𝗿 𝗫𝗽 : ${xpMenu}\ ${reqXp}
-│𝗬𝗼𝘂𝗿 𝗥𝗼𝗹𝗲 : ${role}
-│𝗬𝗼𝘂𝗿 𝗠𝗼𝗻𝗲𝘆 : $${uangku}
-│
-└─「 𝙐𝙎𝙀𝙍'𝙎 𝘼𝘿𝙑𝙀𝙉𝙏𝙐𝙍𝙀 」
-│𝗬𝗼𝘂𝗿 𝗜𝗿𝗼𝗻 : ${getBesi(m.sender)}
-│𝗬𝗼𝘂𝗿 𝗚𝗼𝗹𝗱 : ${getEmas(m.sender)}
-│𝗬𝗼𝘂𝗿 𝗘𝗺𝗲𝗿𝗮𝗹𝗱 : ${getEmerald(m.sender)}
-│𝗬𝗼𝘂𝗿 𝗣𝗼𝘁𝗶𝗼𝗻 : ${getPotion(m.sender)}
-└┬────────────┈ ⳹
+const menulist = `
+${ucapanWaktu} ${pushname}
+
+╭─❏ *『 INFO USER 』*
+│ ➪ Name : ${pushname}
+│ ➪ Number : ${m.sender.split('@')[0]}
+╰───────────────❏
+
+╭─❏ *『 INFO BOT 』*    
+│ ➪ Speed : ${latensie.toFixed(4)} miliseconds
+│ ➪ Runtime : ${runtime(process.uptime())}
+│ ➪ Bot Name : ${global.botname}
+│ ➪ Owner Name : ${global.ownername}
+│ ➪ Owner No : ${global.ownernummenu}
+│ ➪ Host Name : ${os.hostname()}
+│ ➪ Platform : ${os.platform()}
+│ ➪ Total User : ${Object.keys(global.db.users).length}
+│ ➪ Total Hit : ${jumlahcmd}
+│ ➪ Total Hit Today : ${jumlahharian}
+│ ➪ Library : Baileys Multi Device
+╰───────────────❏
+
+╭─❏ *『 INFO SERVER 』*
+│ ➪ Weton : ${weton}
+│ ➪ Date : ${jangwak} 
+│ ➪ Date Islamic: ${dateIslamic}
+│ ➪ Time : ${time}
+│ ➪ Wib : ${moment().utcOffset('+0700').format('HH:mm:ss')}
+│ ➪ Wita : ${moment().utcOffset('+0800').format('HH:mm:ss')}
+│ ➪ Wit : ${moment().utcOffset('+0900').format('HH:mm:ss')}
+╰───────────────❏
+
+╭─❏ *『 USER'S LEVELING 』*
+│ ➪ Your Level : ${levelMenu}
+│ ➪ Your Xp : ${xpMenu}\ ${reqXp}
+│ ➪ Your Role : ${role}
+│ ➪ Your Money : $${uangku}
+╰───────────────❏
+
+╭─❏ *『 USER'S ADVENTURE 』*
+│ ➪ Your Iron : ${getBesi(m.sender)}
+│ ➪ Your Gold : ${getEmas(m.sender)}
+│ ➪ Your Emerald : ${getEmerald(m.sender)}
+│ ➪ Your Potion : ${getPotion(m.sender)}
+╰───────────────❏
+╭─❏ *『 MORE INFO 』*
+│ ➪ Ulang Tahun Owner : ${ohari} Hari ${ojam} Jam ${onet} Menit ${detek} Detik   
+│ ➪ Idul Adha 2022 : ${ieday} Hari ${iedhrs} Jam ${iedmin} Menit ${iedsec} Detik
+│ ➪ Idul Fitri 2023 :  ${jjhari} Hari ${jjjam} Jam ${mmmmenit} Menit ${dddetik} Detik Lagi
+╰───────────────❏
    │✑  Please Select
    │✑  The Button Below
    └─────────────┈ ⳹`
@@ -9272,7 +9328,7 @@ break
 	if (isBanChat) return reply(mess.banChat)
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 listMessage :{
-                    title: `Hi ${pushname}`,
+                    title: `Hi ${pushname} ${ucapanWaktu}`,
                     description: `Please Choose The Menu\n\n`,
                     buttonText: "List Menu",
                     footerText: `${global.botname}`,
