@@ -197,6 +197,11 @@ const dateIslamic = Intl.DateTimeFormat(locale + '-TN-u-ca-islamic', {
       month: 'long',
       year: 'numeric'
     }).format(d)
+const datef = d.toLocaleDateString(locale, {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    })    
 // date
 var buln = ['/01/', '/02/', '/03/', '/04/', '/05/', '/06/', '/07/', '/08/', '/09/', '/10/', '/11/', '/12/'];
 var myHari = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -1599,7 +1604,7 @@ ${ucapanWaktu} ${pushname}
 
 ╭─❏ *『 INFO SERVER 』*
 │ ➪ Weton : ${weton}
-│ ➪ Date : ${jangwak} 
+│ ➪ Date : ${datef} 
 │ ➪ Date Islamic: ${dateIslamic}
 │ ➪ Time : ${time}
 │ ➪ Wib : ${moment().utcOffset('+0700').format('HH:mm:ss')}
